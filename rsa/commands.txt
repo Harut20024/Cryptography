@@ -1,0 +1,5 @@
+openssl genpkey -algorithm RSA -out private_key.pem
+openssl rsa -in private_key.pem -pubout -out public_key.pem
+
+openssl dgst -sha256 -sign private_key.pem -out file.sig commands.txt
+openssl dgst -sha256 -verify public_key.pem -signature file.sig commands.txt
